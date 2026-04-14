@@ -1,0 +1,2197 @@
+<section id="tcpSaasPro">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+    #tcpSaasPro,
+    #tcpSaasPro * {
+      box-sizing: border-box;
+    }
+
+    #tcpSaasPro {
+      --bg: #070809;
+      --bg2: #0d1014;
+      --panel: rgba(16, 17, 20, 0.92);
+      --panel2: rgba(10, 11, 14, 0.96);
+      --stroke: rgba(255,255,255,0.08);
+      --strokeSoft: rgba(255,255,255,0.05);
+      --gold: #d8a94b;
+      --gold2: #f0c56c;
+      --text: #f5f3ee;
+      --muted: #b9b0a1;
+      --green: #1ea54d;
+      --red: #cc5a5a;
+      --shadow: 0 30px 90px rgba(0,0,0,0.55);
+      font-family: Poppins, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 8% 14%, rgba(216,169,75,0.10), transparent 18%),
+        radial-gradient(circle at 92% 62%, rgba(216,169,75,0.08), transparent 22%),
+        linear-gradient(180deg, #070809 0%, #0a0c10 100%);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    #tcpSaasPro .grid-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.08));
+    }
+
+    #tcpSaasPro .wrap {
+      width: 100%;
+      max-width: 1640px;
+      margin: 0 auto;
+      padding: 0 52px;
+    }
+
+    #tcpSaasPro .topbar {
+      height: 88px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    #tcpSaasPro .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    #tcpSaasPro .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(216,169,75,0.28);
+      background: linear-gradient(180deg, rgba(216,169,75,0.10), rgba(216,169,75,0.03));
+      box-shadow: 0 10px 26px rgba(216,169,75,0.10);
+      flex: 0 0 auto;
+    }
+
+    #tcpSaasPro .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #tcpSaasPro .brand-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    #tcpSaasPro .brand-sub {
+      margin-top: 5px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    #tcpSaasPro .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 34px;
+    }
+
+    #tcpSaasPro .nav a {
+      color: #c7c1b5;
+      text-decoration: none;
+      font-size: 15px;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    #tcpSaasPro .nav a.active {
+      color: var(--gold2);
+    }
+
+    #tcpSaasPro .nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -22px;
+      transform: translateX(-50%);
+      width: 84px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      box-shadow: 0 0 16px rgba(216,169,75,0.55);
+    }
+
+    #tcpSaasPro .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    #tcpSaasPro .gold-btn,
+    #tcpSaasPro .ghost-btn,
+    #tcpSaasPro .dark-btn,
+    #tcpSaasPro .mini-btn,
+    #tcpSaasPro .chip-btn {
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      font-family: inherit;
+      border: 0;
+    }
+
+    #tcpSaasPro .mini-btn {
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(17,18,21,0.8);
+      color: #ded7ca;
+      font-size: 14px;
+    }
+
+    #tcpSaasPro .chip-btn {
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color: #e3ddcf;
+      font-size: 13px;
+      border-radius: 999px;
+    }
+
+    #tcpSaasPro .gold-btn {
+      border: 1px solid rgba(255,225,150,0.22);
+      background: linear-gradient(180deg, #e1b55a 0%, #cb9441 100%);
+      color: #17120a;
+      box-shadow: 0 18px 34px rgba(198,138,36,0.22), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    #tcpSaasPro .ghost-btn {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    #tcpSaasPro .dark-btn {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(18,19,22,0.86);
+      color: #e3ddcf;
+    }
+
+    #tcpSaasPro .gold-btn:hover,
+    #tcpSaasPro .ghost-btn:hover,
+    #tcpSaasPro .dark-btn:hover,
+    #tcpSaasPro .mini-btn:hover,
+    #tcpSaasPro .chip-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    #tcpSaasPro .hero {
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(90deg, rgba(7,8,9,0.95) 0%, rgba(7,8,9,0.86) 45%, rgba(7,8,9,0.40) 72%, rgba(7,8,9,0.10) 100%),
+        url('https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/Elegant%20modern%20entrance%20at%20dusk.png') right center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #tcpSaasPro .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 56%, rgba(216,169,75,0.10), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%);
+      pointer-events: none;
+    }
+
+    #tcpSaasPro .hero-inner {
+      width: 100%;
+      max-width: 1640px;
+      margin: 0 auto;
+      padding: 112px 52px 192px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #tcpSaasPro .hero-content {
+      max-width: 720px;
+      animation: tcpSlideUp 0.6s ease;
+    }
+
+    #tcpSaasPro .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 14px;
+      background: rgba(15, 16, 18, 0.72);
+      border: 1px solid rgba(216,169,75,0.30);
+      color: #f1d28b;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.28), inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+
+    #tcpSaasPro .badge-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, var(--gold2), var(--gold));
+      box-shadow: 0 0 12px rgba(216,169,75,0.45);
+    }
+
+    #tcpSaasPro .hero h1 {
+      margin: 22px 0 12px;
+      font-size: clamp(48px, 6vw, 74px);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+
+    #tcpSaasPro .hero h1 .gold {
+      display: block;
+      margin-top: 6px;
+      background: linear-gradient(90deg, #e6c170, #c8922e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    #tcpSaasPro .hero p {
+      margin: 0;
+      max-width: 640px;
+      color: #c7c1b5;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    #tcpSaasPro .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    #tcpSaasPro .main {
+      width: 100%;
+      max-width: 1640px;
+      margin: -162px auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 410px;
+      gap: 28px;
+      align-items: start;
+      position: relative;
+      z-index: 5;
+      padding: 0 52px 84px;
+    }
+
+    #tcpSaasPro .card {
+      position: relative;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(216,169,75,0.06), transparent 22%),
+        linear-gradient(180deg, rgba(20,21,24,0.95), rgba(10,10,12,0.97));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 60px 120px rgba(0,0,0,0.90),
+        0 0 40px rgba(0,0,0,0.60),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
+      transition: all 0.28s ease;
+    }
+
+    #tcpSaasPro .card:hover {
+      transform: translateY(-4px);
+    }
+
+    #tcpSaasPro .card.gold-edge::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(216,169,75,0.16), 0 0 26px rgba(216,169,75,0.08);
+    }
+
+    #tcpSaasPro .calc-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    #tcpSaasPro .calc-head-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    #tcpSaasPro .calc-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(216,169,75,0.26);
+      background: linear-gradient(180deg, rgba(216,169,75,0.10), rgba(216,169,75,0.03));
+      position: relative;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+    }
+
+    #tcpSaasPro .calc-icon::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 12px;
+      bottom: 12px;
+      border-radius: 8px;
+      border: 2px solid var(--gold2);
+      opacity: 0.95;
+    }
+
+    #tcpSaasPro .calc-icon::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 20px;
+      height: 2px;
+      background: var(--gold2);
+      box-shadow: 0 7px 0 var(--gold2), 0 14px 0 var(--gold2);
+    }
+
+    #tcpSaasPro .calc-title {
+      margin: 0 0 4px;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    #tcpSaasPro .live {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #bfb7a9;
+      font-size: 14px;
+    }
+
+    #tcpSaasPro .live .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #26c454, #12923a);
+      box-shadow: 0 0 14px rgba(38,196,84,0.55);
+    }
+
+    #tcpSaasPro .head-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #tcpSaasPro .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    #tcpSaasPro .metric {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 14px;
+      border-radius: 14px;
+      min-height: 74px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    #tcpSaasPro .metric-label {
+      font-size: 13px;
+      color: #aaa293;
+    }
+
+    #tcpSaasPro .metric-value {
+      font-size: 17px;
+      font-weight: 700;
+      color: #f3efe7;
+      line-height: 1.1;
+    }
+
+    #tcpSaasPro .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(14,15,18,0.74);
+      margin-bottom: 18px;
+    }
+
+    #tcpSaasPro .tab {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9c3b8;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    #tcpSaasPro .tab:last-child {
+      border-right: 0;
+    }
+
+    #tcpSaasPro .tab.active {
+      color: #f2cc79;
+    }
+
+    #tcpSaasPro .tab.active::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      box-shadow: 0 0 10px rgba(216,169,75,0.48);
+    }
+
+    #tcpSaasPro .calc-toolbar {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    #tcpSaasPro .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #tcpSaasPro .field label {
+      font-size: 13px;
+      color: #aaa293;
+      font-weight: 600;
+    }
+
+    #tcpSaasPro .field input,
+    #tcpSaasPro .field select,
+    #tcpSaasPro .field textarea {
+      min-height: 46px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(15,16,18,0.90);
+      color: var(--text);
+      padding: 0 14px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.18s ease;
+      width: 100%;
+    }
+
+    #tcpSaasPro .field textarea {
+      min-height: 120px;
+      padding-top: 14px;
+      resize: vertical;
+    }
+
+    #tcpSaasPro .field input:focus,
+    #tcpSaasPro .field select:focus,
+    #tcpSaasPro .field textarea:focus {
+      border-color: rgba(216,169,75,0.45);
+      box-shadow: 0 0 0 3px rgba(216,169,75,0.12);
+    }
+
+    #tcpSaasPro .section-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 14px;
+    }
+
+    #tcpSaasPro .section-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    #tcpSaasPro .pill {
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color: #bdb5a8;
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    #tcpSaasPro .materials {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+      margin-bottom: 18px;
+    }
+
+    #tcpSaasPro .material {
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #111, #0b0b0b);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    #tcpSaasPro .material:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+      border-color: rgba(216,169,75,0.28);
+    }
+
+    #tcpSaasPro .material.active {
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 25px rgba(216,169,75,0.4);
+    }
+
+    #tcpSaasPro .material.active::after {
+      content: "✓";
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #f1cb79, #dca94d);
+      color: #16120a;
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(216,169,75,0.34);
+      z-index: 2;
+    }
+
+    #tcpSaasPro .material img {
+      width: 100%;
+      height: 128px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) contrast(1.06);
+      transition: transform 0.28s ease, filter 0.28s ease;
+    }
+
+    #tcpSaasPro .material:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.96) contrast(1.10);
+    }
+
+    #tcpSaasPro .material-body {
+      padding: 14px;
+    }
+
+    #tcpSaasPro .material-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    #tcpSaasPro .material-sub {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 8px;
+      min-height: 16px;
+    }
+
+    #tcpSaasPro .material-price {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    #tcpSaasPro .kind-panel {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+      margin-top: 4px;
+    }
+
+    #tcpSaasPro .kind-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    #tcpSaasPro .kind-grid .span-2 {
+      grid-column: span 2;
+    }
+
+    #tcpSaasPro .kind-grid .span-3 {
+      grid-column: span 3;
+    }
+
+    #tcpSaasPro .check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(15,16,18,0.90);
+      color: var(--text);
+    }
+
+    #tcpSaasPro .check-row input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+    }
+
+    #tcpSaasPro .summary {
+      position: sticky;
+      top: 20px;
+      background: linear-gradient(180deg, rgba(30,25,18,0.90), rgba(10,10,10,0.95));
+      border: 1px solid rgba(216,169,75,0.25);
+      box-shadow: 0 0 40px rgba(216,169,75,0.15), 0 40px 80px rgba(0,0,0,0.8);
+      animation: tcpGlowPulse 4s infinite ease-in-out;
+    }
+
+    #tcpSaasPro .summary::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      border-radius:22px;
+      padding:1px;
+      background:linear-gradient(180deg,rgba(216,169,75,.8),rgba(216,169,75,.1));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events:none;
+    }
+
+    #tcpSaasPro .summary-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    #tcpSaasPro .currency {
+      min-width: 82px;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(15,16,18,0.82);
+      color: #f3ede0;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #tcpSaasPro .total {
+      font-size: 58px;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      color: var(--gold);
+      margin: 8px 0 16px;
+      transition: all 0.3s ease;
+    }
+
+    #tcpSaasPro .valid {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 12px;
+      background: rgba(25,112,45,0.56);
+      border: 1px solid rgba(61,165,88,0.24);
+      color: #d9f6e0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    #tcpSaasPro .valid::before {
+      content: "+";
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      display: inline-grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    #tcpSaasPro .breakdown {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 0;
+    }
+
+    #tcpSaasPro .line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      font-size: 15px;
+      color: #e2ddd3;
+    }
+
+    #tcpSaasPro .line span:last-child {
+      font-weight: 700;
+      color: #f4eee1;
+      white-space: nowrap;
+    }
+
+    #tcpSaasPro .quote-box {
+      margin-top: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      padding: 14px;
+      max-height: 240px;
+      overflow: auto;
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #d9d1c4;
+    }
+
+    #tcpSaasPro .warning-box {
+      display: grid;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    #tcpSaasPro .warn {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(204,90,90,0.10);
+      border: 1px solid rgba(204,90,90,0.22);
+      color: #f0c2c2;
+      font-size: 13px;
+    }
+
+    #tcpSaasPro .summary-buttons {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    #tcpSaasPro .projects {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    #tcpSaasPro .projects h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    #tcpSaasPro .project-search {
+      margin-bottom: 12px;
+    }
+
+    #tcpSaasPro .project-search input {
+      width: 100%;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(15,16,18,0.90);
+      color: var(--text);
+      padding: 0 12px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+
+    #tcpSaasPro .project-list {
+      display: grid;
+      gap: 12px;
+      max-height: 420px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    #tcpSaasPro .project-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      padding: 14px;
+    }
+
+    #tcpSaasPro .project-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    #tcpSaasPro .project-meta {
+      font-size: 12px;
+      color: #aba294;
+      line-height: 1.5;
+    }
+
+    #tcpSaasPro .project-total {
+      color: var(--gold2);
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    #tcpSaasPro .project-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    #tcpSaasPro .status {
+      margin-top: 16px;
+      min-height: 18px;
+      font-size: 13px;
+      color: #b8af9e;
+    }
+
+    #tcpSaasPro .status.error {
+      color: #f0a7a7;
+    }
+
+    #tcpSaasPro .status.success {
+      color: #b7e8c2;
+    }
+
+    @keyframes tcpFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes tcpSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes tcpGlowPulse {
+      0% { box-shadow: 0 0 30px rgba(216,169,75,.15), 0 40px 80px rgba(0,0,0,.8); }
+      50% { box-shadow: 0 0 50px rgba(216,169,75,.25), 0 40px 80px rgba(0,0,0,.8); }
+      100% { box-shadow: 0 0 30px rgba(216,169,75,.15), 0 40px 80px rgba(0,0,0,.8); }
+    }
+
+    @media (max-width: 1320px) {
+      #tcpSaasPro .materials {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      #tcpSaasPro .calc-toolbar,
+      #tcpSaasPro .kind-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #tcpSaasPro .kind-grid .span-2,
+      #tcpSaasPro .kind-grid .span-3 {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      #tcpSaasPro .nav {
+        display: none;
+      }
+
+      #tcpSaasPro .main {
+        grid-template-columns: 1fr;
+      }
+
+      #tcpSaasPro .summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 860px) {
+      #tcpSaasPro .wrap,
+      #tcpSaasPro .hero-inner,
+      #tcpSaasPro .main {
+        width: 100%;
+        max-width: none;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      #tcpSaasPro .topbar {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 14px;
+        padding: 16px 0;
+      }
+
+      #tcpSaasPro .top-actions {
+        justify-content: flex-start;
+      }
+
+      #tcpSaasPro .hero {
+        min-height: 500px;
+        background:
+          linear-gradient(180deg, rgba(7,8,9,0.92) 0%, rgba(7,8,9,0.74) 55%, rgba(7,8,9,0.45) 100%),
+          url('https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/Elegant%20modern%20entrance%20at%20dusk.png') center / cover no-repeat;
+      }
+
+      #tcpSaasPro .hero-inner {
+        padding-top: 86px;
+        padding-bottom: 140px;
+      }
+
+      #tcpSaasPro .hero-actions,
+      #tcpSaasPro .metrics,
+      #tcpSaasPro .materials,
+      #tcpSaasPro .calc-toolbar,
+      #tcpSaasPro .kind-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+    }
+  </style>
+
+  <div class="grid-bg"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/Tradiecalcpro.png/:/rs=h:175,m" alt="Tradie Calculator Pro">
+        </div>
+        <div>
+          <div class="brand-title">TRADIE CALCULATOR PRO</div>
+          <div class="brand-sub">Premium quoting dashboard</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#tcpMainArea">Calculator</a>
+        <a href="#tcpProjectsArea">Projects</a>
+        <a href="#tcpProjectsArea">Library</a>
+      </nav>
+
+      <div class="top-actions">
+        <button class="gold-btn" id="tcpNewQuoteBtn" type="button">New Quote</button>
+        <button class="ghost-btn" id="tcpOpenProjectsBtn" type="button">Projects</button>
+        <button class="dark-btn" id="tcpLogoutBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          BUILT FOR AUSSIE TRADIES
+        </div>
+
+        <h1>
+          Price Fencing & Walls
+          <span class="gold">Fast. Accurate. Profitable.</span>
+        </h1>
+
+        <p>
+          Premium quoting software for fencing, block walls and retaining walls, built around one master engine, fast snapshots, clean pricing control and polished UX.
+        </p>
+
+        <div class="hero-actions">
+          <button class="gold-btn" id="tcpHeroStartBtn" type="button">Start New Quote</button>
+          <button class="ghost-btn" id="tcpHeroProjectsBtn" type="button">View Projects</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main" id="tcpMainArea">
+    <div class="card gold-edge">
+      <div class="calc-head">
+        <div class="calc-head-left">
+          <div class="calc-icon"></div>
+          <div>
+            <h2 class="calc-title">Live Pricing Calculator</h2>
+            <div class="live">
+              <span class="dot"></span>
+              One engine, three workflows, premium shell
+            </div>
+          </div>
+        </div>
+
+        <div class="head-actions">
+          <button class="mini-btn" id="tcpResetBtn" type="button">Reset</button>
+          <button class="mini-btn" id="tcpReloadBtn" type="button">Recalculate</button>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-label">Current Length</div>
+          <div class="metric-value" id="tcpLenVal">20m</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Current Height</div>
+          <div class="metric-value" id="tcpHeightVal">1.8m</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Selected Type</div>
+          <div class="metric-value" id="tcpTypeVal">Colorbond</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" data-calc="fence">Fence Calculator</div>
+        <div class="tab" data-calc="block">Block Wall Calculator</div>
+        <div class="tab" data-calc="retaining">Retaining Calculator</div>
+      </div>
+
+      <div class="calc-toolbar">
+        <div class="field">
+          <label for="tcpJobName">Job Name</label>
+          <input id="tcpJobName" type="text" placeholder="Example, Smith front fence">
+        </div>
+        <div class="field">
+          <label for="tcpQuickLength">Length</label>
+          <input id="tcpQuickLength" type="number" min="0" step="0.1" value="20">
+        </div>
+        <div class="field">
+          <label for="tcpQuickHeight">Height</label>
+          <select id="tcpQuickHeight"></select>
+        </div>
+      </div>
+
+      <div class="section-row">
+        <div class="section-title">Material Presets</div>
+        <div class="pill">Preset changes feed the live quote instantly</div>
+      </div>
+
+      <div class="materials" id="tcpMaterialsGrid"></div>
+
+      <div class="kind-panel">
+        <div class="section-row">
+          <div class="section-title">Workflow Controls</div>
+          <div>
+            <button class="chip-btn" id="tcpJumpProjectsBtn" type="button">Jump to Projects</button>
+          </div>
+        </div>
+
+        <div class="kind-grid" id="tcpKindFields"></div>
+      </div>
+
+      <div class="status" id="tcpStatus"></div>
+    </div>
+
+    <div class="card summary gold-edge">
+      <div class="summary-top">
+        <h2 class="calc-title" style="margin:0">Live Estimate</h2>
+        <div class="currency">AUD</div>
+      </div>
+
+      <div class="total" id="tcpTotal">$0</div>
+
+      <div class="valid">Quote engine connected and ready</div>
+
+      <div class="breakdown">
+        <div class="line"><span>Materials</span><span id="tcpMat">$0</span></div>
+        <div class="line"><span>Labour</span><span id="tcpLab">$0</span></div>
+        <div class="line"><span>Extras</span><span id="tcpExtra">$0</span></div>
+        <div class="line"><span>Sell / m</span><span id="tcpPerM">$0/m</span></div>
+        <div class="line"><span>Cost</span><span id="tcpCost">$0</span></div>
+        <div class="line"><span>Profit</span><span id="tcpProfit">$0</span></div>
+      </div>
+
+      <div class="summary-buttons">
+        <button class="gold-btn" id="tcpPdfBtn" type="button">Generate Quote PDF</button>
+        <button class="dark-btn" id="tcpSaveProjectBtn" type="button">Save Snapshot</button>
+      </div>
+
+      <div class="warning-box" id="tcpWarningBox"></div>
+      <div class="quote-box" id="tcpQuoteBox">Run a quote to generate a structured summary.</div>
+
+      <div class="projects" id="tcpProjectsArea">
+        <h3>Recent Projects</h3>
+        <div class="project-search">
+          <input id="tcpProjectFilter" type="text" placeholder="Filter saved snapshots">
+        </div>
+        <div class="project-list" id="tcpProjectList">
+          <div class="project-card">
+            <div class="project-title">No saved projects yet</div>
+            <div class="project-meta">Run a quote, then save a snapshot.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/gh/1stchoicefnq-afk/TradieCalcEngine@main/TradieCalcEngine.js"></script>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = "tcp_saas_snapshots_v3";
+
+      var state = {
+        currentCalc: "fence",
+        currentPresetIndex: 0,
+        currentResult: null,
+        currentSummary: null,
+        form: {
+          fence: {
+            position: "front",
+            sides: "2",
+            access: "easy",
+            slope: "flat",
+            ground: "standard",
+            timeline: "normal",
+            remove: "none",
+            sleeper: "none",
+            singleQty: 0,
+            doubleQty: 0,
+            slide: "no",
+            slideWidth: 3.9,
+            corner: false,
+            onWall: false,
+            panelSystem: "lysaght"
+          },
+          block: {
+            type: "wall",
+            position: "front",
+            sides: "2",
+            access: "easy",
+            ground: "standard",
+            corners: 0,
+            footing: "yes",
+            render: "none",
+            capType: "flat",
+            baseHeight: 400,
+            infillType: "colorbond",
+            infillHeight: 1200,
+            retainingInfill: false,
+            solidSection: false,
+            solidLength: 3,
+            renderSolid: "none",
+            letterbox: false
+          },
+          retaining: {
+            type: "concrete",
+            bank: "no",
+            access: "easy",
+            ground: "standard",
+            removal: "none",
+            fenceTop: "no",
+            fenceType: "colorbond",
+            grass: "no",
+            grassDepth: 2.5
+          }
+        }
+      };
+
+      var presets = {
+        fence: [
+          {
+            name: "Colorbond",
+            sub: "Premium & low maintenance",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/colorbond-hero-image.png/:/rs=h:175,m",
+            engineType: "colorbondStd",
+            rate: 220
+          },
+          {
+            name: "Timber",
+            sub: "Natural timber finish",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/timberfencecairns.png/:/rs=h:175,m",
+            engineType: "timberStd",
+            rate: 190
+          },
+          {
+            name: "Slat",
+            sub: "Modern horizontal slats",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/Timber-Look_aluminiumslat-cairns.png/:/rs=h:175,m",
+            engineType: "aluSlat",
+            rate: 680
+          },
+          {
+            name: "Glass",
+            sub: "Frameless premium finish",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/glassfence-cairns.png/:/rs=h:175,m",
+            engineType: "poolGlass",
+            rate: 480
+          },
+          {
+            name: "Pool Fence",
+            sub: "Aluminium safety fencing",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/Pool-fencing-cairns-hero-image.png/:/rs=h:175,m",
+            engineType: "poolAlu",
+            rate: 250
+          }
+        ],
+        block: [
+          {
+            name: "Block Wall",
+            sub: "Standard structural wall",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/blockwall.png/:/rs=h:175,m",
+            apply: { type: "wall", render: "none", capType: "flat" },
+            rateOverrides: { rate_wall: 450 }
+          },
+          {
+            name: "Smooth Render",
+            sub: "Premium rendered finish",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/smoothrenderretainingwall.png/:/rs=h:175,m",
+            apply: { type: "wall", render: "yes", capType: "rendered" },
+            rateOverrides: { rate_wall: 520 }
+          },
+          {
+            name: "Heron Block",
+            sub: "Feature retaining block",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/heronblockwall.png/:/rs=h:175,m",
+            apply: { type: "retaining", render: "none", capType: "flat" },
+            rateOverrides: { rate_retaining: 480 }
+          },
+          {
+            name: "Colorbond Frontage",
+            sub: "Nib and columns with Colorbond",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/blockwall.png/:/rs=h:175,m",
+            apply: { type: "columns", infillType: "colorbond", solidSection: true, solidLength: 3, render: "yes", renderSolid: "yes", capType: "rendered" },
+            rateOverrides: {}
+          },
+          {
+            name: "Slat Frontage",
+            sub: "Nib and columns with slat infill",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/smoothrenderretainingwall.png/:/rs=h:175,m",
+            apply: { type: "columns", infillType: "slat", solidSection: true, solidLength: 3, render: "yes", renderSolid: "yes", capType: "rendered" },
+            rateOverrides: {}
+          }
+        ],
+        retaining: [
+          {
+            name: "Concrete Sleeper",
+            sub: "Steel post sleeper wall",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/concretesleeperwall.png/:/rs=h:175,m",
+            apply: { type: "concrete" },
+            rateOverrides: {}
+          },
+          {
+            name: "Timber Wall",
+            sub: "Budget retaining option",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/timberwall.png/:/rs=h:175,m",
+            apply: { type: "timber" },
+            rateOverrides: {}
+          },
+          {
+            name: "Heron Retaining",
+            sub: "Segmental retaining system",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/heronblockwall.png/:/rs=h:175,m",
+            apply: { type: "heron" },
+            rateOverrides: {}
+          },
+          {
+            name: "Block Retaining",
+            sub: "Rendered structural retaining",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/blockwall.png/:/rs=h:175,m",
+            apply: { type: "bessa" },
+            rateOverrides: {}
+          },
+          {
+            name: "Retaining + Fence",
+            sub: "Wall ready for fence on top",
+            img: "https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/concretesleeperwall.png/:/rs=h:175,m",
+            apply: { type: "concrete", fenceTop: "yes", fenceType: "colorbond" },
+            rateOverrides: {}
+          }
+        ]
+      };
+
+      var el = {
+        total: document.getElementById("tcpTotal"),
+        mat: document.getElementById("tcpMat"),
+        lab: document.getElementById("tcpLab"),
+        extra: document.getElementById("tcpExtra"),
+        perM: document.getElementById("tcpPerM"),
+        cost: document.getElementById("tcpCost"),
+        profit: document.getElementById("tcpProfit"),
+        typeVal: document.getElementById("tcpTypeVal"),
+        lenVal: document.getElementById("tcpLenVal"),
+        heightVal: document.getElementById("tcpHeightVal"),
+        status: document.getElementById("tcpStatus"),
+        tabs: Array.from(document.querySelectorAll("#tcpSaasPro .tab")),
+        materialsGrid: document.getElementById("tcpMaterialsGrid"),
+        kindFields: document.getElementById("tcpKindFields"),
+        projectList: document.getElementById("tcpProjectList"),
+        projectFilter: document.getElementById("tcpProjectFilter"),
+        quickLength: document.getElementById("tcpQuickLength"),
+        quickHeight: document.getElementById("tcpQuickHeight"),
+        jobName: document.getElementById("tcpJobName"),
+        warningBox: document.getElementById("tcpWarningBox"),
+        quoteBox: document.getElementById("tcpQuoteBox")
+      };
+
+      function money(n) {
+        return "$" + Number(n || 0).toLocaleString("en-AU", {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        });
+      }
+
+      function escapeHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function setStatus(text, type) {
+        el.status.textContent = text || "";
+        el.status.className = "status" + (type ? " " + type : "");
+      }
+
+      function animateMoney(node, start, end, duration) {
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var value = Math.floor(start + (end - start) * progress);
+          node.textContent = money(value);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      function getHeightOptions(calc) {
+        if (calc === "retaining") {
+          return [
+            { value: "0.4", label: "0.4m" },
+            { value: "0.6", label: "0.6m" },
+            { value: "0.8", label: "0.8m" },
+            { value: "1.0", label: "1.0m" }
+          ];
+        }
+        if (calc === "block") {
+          return [
+            { value: "1.0", label: "1.0m" },
+            { value: "1.2", label: "1.2m" },
+            { value: "1.4", label: "1.4m" },
+            { value: "1.6", label: "1.6m" },
+            { value: "1.8", label: "1.8m" },
+            { value: "2.0", label: "2.0m" }
+          ];
+        }
+        return [
+          { value: "1.2", label: "1.2m" },
+          { value: "1.5", label: "1.5m" },
+          { value: "1.8", label: "1.8m" },
+          { value: "2.0", label: "2.0m" },
+          { value: "2.1", label: "2.1m" }
+        ];
+      }
+
+      function renderHeightOptions() {
+        var current = String(el.quickHeight.value || "");
+        var options = getHeightOptions(state.currentCalc);
+
+        el.quickHeight.innerHTML = options.map(function (o) {
+          return '<option value="' + o.value + '">' + o.label + '</option>';
+        }).join("");
+
+        if (!options.some(function (o) { return o.value === current; })) {
+          current = options[0].value;
+        }
+        el.quickHeight.value = current;
+      }
+
+      function renderMaterials() {
+        var list = presets[state.currentCalc] || [];
+        el.materialsGrid.innerHTML = list.map(function (item, index) {
+          return ''
+            + '<div class="material' + (index === state.currentPresetIndex ? ' active' : '') + '" data-index="' + index + '">'
+            + '  <img src="' + item.img + '" alt="' + escapeHtml(item.name) + '">'
+            + '  <div class="material-body">'
+            + '    <div class="material-title">' + escapeHtml(item.name) + '</div>'
+            + '    <div class="material-sub">' + escapeHtml(item.sub) + '</div>'
+            + '    <div class="material-price">Preset</div>'
+            + '  </div>'
+            + '</div>';
+        }).join("");
+
+        Array.from(el.materialsGrid.querySelectorAll(".material")).forEach(function (card) {
+          card.addEventListener("click", function () {
+            state.currentPresetIndex = Number(card.getAttribute("data-index") || 0);
+            applyPresetToState();
+            renderMaterials();
+            renderKindFields();
+            runCalc();
+            setStatus("Preset selected", "success");
+          });
+        });
+      }
+
+      function currentPreset() {
+        return (presets[state.currentCalc] || [])[state.currentPresetIndex] || null;
+      }
+
+      function applyPresetToState() {
+        var preset = currentPreset();
+        if (!preset || !preset.apply) return;
+
+        var target = state.form[state.currentCalc];
+        Object.keys(preset.apply).forEach(function (key) {
+          target[key] = preset.apply[key];
+        });
+      }
+
+      function fieldHtml(label, name, value, type, extraClass) {
+        type = type || "text";
+        extraClass = extraClass || "";
+        return ''
+          + '<div class="field ' + extraClass + '">'
+          + '  <label for="' + name + '">' + label + '</label>'
+          + '  <input id="' + name + '" data-name="' + name + '" type="' + type + '" value="' + escapeHtml(value) + '">'
+          + '</div>';
+      }
+
+      function selectHtml(label, name, value, options, extraClass) {
+        extraClass = extraClass || "";
+        return ''
+          + '<div class="field ' + extraClass + '">'
+          + '  <label for="' + name + '">' + label + '</label>'
+          + '  <select id="' + name + '" data-name="' + name + '">'
+          + options.map(function (o) {
+              return '<option value="' + escapeHtml(o.value) + '"' + (String(o.value) === String(value) ? ' selected' : '') + '>' + escapeHtml(o.label) + '</option>';
+            }).join("")
+          + '  </select>'
+          + '</div>';
+      }
+
+      function checkHtml(label, name, checked) {
+        return ''
+          + '<label class="check-row">'
+          + '  <input id="' + name + '" data-name="' + name + '" type="checkbox"' + (checked ? ' checked' : '') + '>'
+          + '  <span>' + label + '</span>'
+          + '</label>';
+      }
+
+      function renderKindFields() {
+        var f, html = "";
+        if (state.currentCalc === "fence") {
+          f = state.form.fence;
+          html += selectHtml("Position", "f_position", f.position, [
+            { value: "front", label: "Front" },
+            { value: "side", label: "Side" },
+            { value: "rear", label: "Rear" },
+            { value: "perimeter", label: "Perimeter" }
+          ]);
+          html += selectHtml("Sides", "f_sides", f.sides, [
+            { value: "2", label: "2 sides" },
+            { value: "3", label: "3 sides" },
+            { value: "4", label: "4 sides" }
+          ]);
+          html += selectHtml("Access", "f_access", f.access, [
+            { value: "easy", label: "Easy" },
+            { value: "limited", label: "Limited" },
+            { value: "none", label: "No machine" }
+          ]);
+          html += selectHtml("Slope", "f_slope", f.slope, [
+            { value: "flat", label: "Flat" },
+            { value: "minor", label: "Minor" },
+            { value: "moderate", label: "Moderate" },
+            { value: "steep", label: "Steep" }
+          ]);
+          html += selectHtml("Ground", "f_ground", f.ground, [
+            { value: "standard", label: "Standard" },
+            { value: "roots", label: "Roots" },
+            { value: "rock", label: "Rock" },
+            { value: "unsure", label: "Unsure" }
+          ]);
+          html += selectHtml("Timeline", "f_timeline", f.timeline, [
+            { value: "normal", label: "Normal" },
+            { value: "urgent", label: "Urgent" }
+          ]);
+          html += selectHtml("Removal", "f_remove", f.remove, [
+            { value: "none", label: "None" },
+            { value: "fence", label: "Remove fence" },
+            { value: "masonry", label: "Remove masonry" }
+          ]);
+          html += selectHtml("Sleeper Base", "f_sleeper", f.sleeper, [
+            { value: "none", label: "None" },
+            { value: "timber", label: "Timber" },
+            { value: "aluminium", label: "Aluminium" },
+            { value: "included", label: "Included" }
+          ]);
+          html += fieldHtml("Single Gates", "f_singleQty", f.singleQty, "number");
+          html += fieldHtml("Double Gates", "f_doubleQty", f.doubleQty, "number");
+          html += selectHtml("Slide Gate", "f_slide", f.slide, [
+            { value: "no", label: "No" },
+            { value: "yes", label: "Yes" }
+          ]);
+          html += fieldHtml("Slide Width", "f_slideWidth", f.slideWidth, "number");
+          html += selectHtml("Panel System", "f_panelSystem", f.panelSystem, [
+            { value: "lysaght", label: "Lysaght 2.35m" },
+            { value: "oxworks", label: "Oxworks 2.4m" }
+          ]);
+          html += '<div class="span-3" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">'
+            + checkHtml("Corner / return", "f_corner", f.corner)
+            + checkHtml("On wall fixing", "f_onWall", f.onWall)
+            + '</div>';
+        } else if (state.currentCalc === "block") {
+          f = state.form.block;
+          html += selectHtml("Style", "b_type", f.type, [
+            { value: "wall", label: "Wall" },
+            { value: "retaining", label: "Retaining" },
+            { value: "columns", label: "Nib + columns" }
+          ]);
+          html += selectHtml("Position", "b_position", f.position, [
+            { value: "front", label: "Front" },
+            { value: "perimeter", label: "Perimeter" },
+            { value: "side", label: "Side" }
+          ]);
+          html += selectHtml("Sides", "b_sides", f.sides, [
+            { value: "2", label: "2 sides" },
+            { value: "3", label: "3 sides" },
+            { value: "4", label: "4 sides" }
+          ]);
+          html += selectHtml("Access", "b_access", f.access, [
+            { value: "easy", label: "Easy" },
+            { value: "limited", label: "Limited" },
+            { value: "nomachine", label: "No machine" }
+          ]);
+          html += selectHtml("Ground", "b_ground", f.ground, [
+            { value: "standard", label: "Standard" },
+            { value: "roots", label: "Roots" },
+            { value: "rock", label: "Rock" },
+            { value: "unsure", label: "Unsure" }
+          ]);
+          html += fieldHtml("Corners", "b_corners", f.corners, "number");
+          html += selectHtml("Footing", "b_footing", f.footing, [
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" }
+          ]);
+          html += selectHtml("Render", "b_render", f.render, [
+            { value: "none", label: "None" },
+            { value: "yes", label: "Yes" }
+          ]);
+          html += selectHtml("Cap Type", "b_capType", f.capType, [
+            { value: "none", label: "None" },
+            { value: "flat", label: "Flat" },
+            { value: "rendered", label: "Rendered" }
+          ]);
+          html += fieldHtml("Base Height mm", "b_baseHeight", f.baseHeight, "number");
+          html += selectHtml("Infill Type", "b_infillType", f.infillType, [
+            { value: "none", label: "None" },
+            { value: "colorbond", label: "Colorbond" },
+            { value: "slat", label: "Slat" },
+            { value: "timber", label: "Timber" },
+            { value: "pool", label: "Pool Fence" },
+            { value: "glass", label: "Glass" }
+          ]);
+          html += fieldHtml("Infill Height mm", "b_infillHeight", f.infillHeight, "number");
+          html += fieldHtml("Solid Length m", "b_solidLength", f.solidLength, "number");
+          html += selectHtml("Render Solid", "b_renderSolid", f.renderSolid, [
+            { value: "none", label: "None" },
+            { value: "yes", label: "Yes" }
+          ]);
+          html += '<div class="span-3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">'
+            + checkHtml("Retaining infill", "b_retainingInfill", f.retainingInfill)
+            + checkHtml("Solid section", "b_solidSection", f.solidSection)
+            + checkHtml("Letterbox", "b_letterbox", f.letterbox)
+            + '</div>';
+        } else {
+          f = state.form.retaining;
+          html += selectHtml("System", "r_type", f.type, [
+            { value: "timber", label: "Timber" },
+            { value: "concrete", label: "Concrete sleeper" },
+            { value: "heron", label: "Heron block" },
+            { value: "bessa", label: "Bessa block" }
+          ]);
+          html += selectHtml("Bank Position", "r_bank", f.bank, [
+            { value: "no", label: "No" },
+            { value: "yes", label: "Yes" },
+            { value: "unsure", label: "Unsure" }
+          ]);
+          html += selectHtml("Access", "r_access", f.access, [
+            { value: "easy", label: "Easy" },
+            { value: "limited", label: "Limited" },
+            { value: "nomachine", label: "No machine" }
+          ]);
+          html += selectHtml("Ground", "r_ground", f.ground, [
+            { value: "standard", label: "Standard" },
+            { value: "rock", label: "Rock" },
+            { value: "unsure", label: "Unsure" }
+          ]);
+          html += selectHtml("Removal", "r_removal", f.removal, [
+            { value: "none", label: "None" },
+            { value: "timber", label: "Old timber wall" },
+            { value: "retaining", label: "Old retaining wall" }
+          ]);
+          html += selectHtml("Fence On Top", "r_fenceTop", f.fenceTop, [
+            { value: "no", label: "No" },
+            { value: "yes", label: "Yes" }
+          ]);
+          html += selectHtml("Fence Type", "r_fenceType", f.fenceType, [
+            { value: "colorbond", label: "Colorbond" },
+            { value: "timber", label: "Timber" },
+            { value: "slat", label: "Slat" },
+            { value: "pool", label: "Pool Fence" }
+          ]);
+          html += selectHtml("Grass Roots", "r_grass", f.grass, [
+            { value: "no", label: "No" },
+            { value: "yes", label: "Yes" }
+          ]);
+          html += fieldHtml("Grass Depth m", "r_grassDepth", f.grassDepth, "number");
+        }
+
+        el.kindFields.innerHTML = html;
+
+        Array.from(el.kindFields.querySelectorAll("[data-name]")).forEach(function (node) {
+          node.addEventListener("input", syncKindFieldsToState);
+          node.addEventListener("change", syncKindFieldsToState);
+        });
+      }
+
+      function syncKindFieldsToState() {
+        Array.from(el.kindFields.querySelectorAll("[data-name]")).forEach(function (node) {
+          var name = node.getAttribute("data-name");
+          if (!name) return;
+
+          if (name.indexOf("f_") === 0) {
+            var keyF = name.replace("f_", "");
+            state.form.fence[keyF] = node.type === "checkbox" ? !!node.checked : node.value;
+          } else if (name.indexOf("b_") === 0) {
+            var keyB = name.replace("b_", "");
+            state.form.block[keyB] = node.type === "checkbox" ? !!node.checked : node.value;
+          } else if (name.indexOf("r_") === 0) {
+            var keyR = name.replace("r_", "");
+            state.form.retaining[keyR] = node.type === "checkbox" ? !!node.checked : node.value;
+          }
+        });
+        runCalc();
+      }
+
+      function buildInputPayload() {
+        var preset = currentPreset();
+        var length = Number(el.quickLength.value || 0);
+        var height = Number(el.quickHeight.value || 0);
+
+        if (state.currentCalc === "fence") {
+          var f = state.form.fence;
+          return {
+            kind: "fence",
+            type: preset.engineType,
+            length: length,
+            height: height,
+            position: f.position,
+            sides: f.sides,
+            slope: f.slope,
+            access: f.access,
+            ground: f.ground,
+            timeline: f.timeline,
+            remove: f.remove,
+            sleeper: f.sleeper,
+            singleQty: Number(f.singleQty || 0),
+            doubleQty: Number(f.doubleQty || 0),
+            slide: f.slide,
+            slideWidth: Number(f.slideWidth || 3.9),
+            corner: !!f.corner,
+            onWall: !!f.onWall,
+            panelSystem: f.panelSystem,
+            rates: {}
+          };
+        }
+
+        if (state.currentCalc === "block") {
+          var b = state.form.block;
+          return {
+            kind: "block",
+            type: b.type,
+            position: b.position,
+            sides: Number(b.sides || 2),
+            access: b.access,
+            ground: b.ground,
+            corners: Number(b.corners || 0),
+            wallHeight: height,
+            wallLength: length,
+            footing: b.footing,
+            render: b.render,
+            capType: b.capType,
+            totalLength: length,
+            baseHeight: Number(b.baseHeight || 400),
+            infillType: b.infillType,
+            infillHeight: Number(b.infillHeight || 1200),
+            retainingInfill: !!b.retainingInfill,
+            solidSection: !!b.solidSection,
+            solidLength: Number(b.solidLength || 3),
+            renderSolid: b.renderSolid,
+            letterbox: !!b.letterbox,
+            rates: preset.rateOverrides || {}
+          };
+        }
+
+        var r = state.form.retaining;
+        return {
+          kind: "retaining",
+          type: r.type,
+          height: height,
+          length: Math.round(length),
+          bank: r.bank,
+          access: r.access,
+          ground: r.ground,
+          removal: r.removal,
+          fenceTop: r.fenceTop,
+          fenceType: r.fenceType,
+          grass: r.grass,
+          grassDepth: Number(r.grassDepth || 2.5),
+          rates: preset.rateOverrides || {}
+        };
+      }
+
+      function applyDashboard(result) {
+        var oldTotal = Number(String(el.total.textContent || "$0").replace(/[^\d.-]/g, "")) || 0;
+        var dash = window.TradieCalc.toDashboard(result);
+        var summary = window.TradieCalc.toSummary(result);
+
+        state.currentResult = result;
+        state.currentSummary = summary;
+
+        el.lenVal.textContent = (dash.length || 0) + "m";
+        el.heightVal.textContent = dash.height || "-";
+        el.typeVal.textContent = dash.type || "-";
+
+        animateMoney(el.total, oldTotal, Number(dash.total || 0), 350);
+        el.mat.textContent = money(dash.materials || 0);
+        el.lab.textContent = money(dash.labour || 0);
+        el.extra.textContent = money(dash.extras || 0);
+        el.perM.textContent = summary.perM || "$0/m";
+        el.cost.textContent = summary.cost || "$0";
+        el.profit.textContent = summary.profit || "$0";
+
+        el.warningBox.innerHTML = "";
+        (summary.warnings || []).forEach(function (w) {
+          var div = document.createElement("div");
+          div.className = "warn";
+          div.textContent = w;
+          el.warningBox.appendChild(div);
+        });
+
+        el.quoteBox.textContent = summary.quoteText || "Quote summary ready.";
+      }
+
+      function runCalc() {
+        if (!window.TradieCalc || typeof window.TradieCalc.calculate !== "function") {
+          setStatus("Engine failed to load.", "error");
+          return;
+        }
+
+        var input = buildInputPayload();
+        var result = window.TradieCalc.calculate(input);
+
+        if (result && result.error) {
+          setStatus(result.error, "error");
+          return;
+        }
+
+        applyDashboard(result);
+        setStatus("Quote updated.", "success");
+      }
+
+      function switchCalc(name) {
+        state.currentCalc = name;
+        state.currentPresetIndex = 0;
+        renderHeightOptions();
+        applyPresetToState();
+        renderMaterials();
+        renderKindFields();
+
+        el.tabs.forEach(function (tab) {
+          tab.classList.toggle("active", tab.getAttribute("data-calc") === name);
+        });
+
+        runCalc();
+      }
+
+      function getSnapshots() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function setSnapshots(items) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      }
+
+      function saveSnapshot() {
+        if (!state.currentResult) {
+          setStatus("Run a quote first.", "error");
+          return;
+        }
+
+        var snaps = getSnapshots();
+        snaps.unshift({
+          id: "snap_" + Date.now(),
+          name: (el.jobName.value || "").trim() || "Untitled quote",
+          calc: state.currentCalc,
+          presetIndex: state.currentPresetIndex,
+          quickLength: el.quickLength.value,
+          quickHeight: el.quickHeight.value,
+          form: JSON.parse(JSON.stringify(state.form)),
+          savedAt: new Date().toISOString(),
+          dashboard: window.TradieCalc.toDashboard(state.currentResult)
+        });
+
+        setSnapshots(snaps.slice(0, 50));
+        renderSnapshots();
+        setStatus("Snapshot saved.", "success");
+      }
+
+      function loadSnapshot(id) {
+        var snap = getSnapshots().find(function (x) { return x.id === id; });
+        if (!snap) return;
+
+        state.currentCalc = snap.calc;
+        state.currentPresetIndex = snap.presetIndex || 0;
+        state.form = snap.form || state.form;
+        el.jobName.value = snap.name || "";
+        renderHeightOptions();
+        el.quickLength.value = snap.quickLength;
+        el.quickHeight.value = snap.quickHeight;
+        renderMaterials();
+        renderKindFields();
+
+        el.tabs.forEach(function (tab) {
+          tab.classList.toggle("active", tab.getAttribute("data-calc") === state.currentCalc);
+        });
+
+        runCalc();
+        setStatus("Snapshot loaded.", "success");
+        document.getElementById("tcpMainArea").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function deleteSnapshot(id) {
+        var next = getSnapshots().filter(function (x) { return x.id !== id; });
+        setSnapshots(next);
+        renderSnapshots();
+        setStatus("Snapshot deleted.", "success");
+      }
+
+      function renderSnapshots() {
+        var snaps = getSnapshots();
+        var query = String(el.projectFilter.value || "").trim().toLowerCase();
+
+        if (query) {
+          snaps = snaps.filter(function (x) {
+            return (
+              String(x.name || "").toLowerCase().indexOf(query) > -1 ||
+              String(x.calc || "").toLowerCase().indexOf(query) > -1 ||
+              String((x.dashboard && x.dashboard.type) || "").toLowerCase().indexOf(query) > -1
+            );
+          });
+        }
+
+        if (!snaps.length) {
+          el.projectList.innerHTML =
+            '<div class="project-card"><div class="project-title">No matching projects</div><div class="project-meta">Save a snapshot or change your filter.</div></div>';
+          return;
+        }
+
+        el.projectList.innerHTML = snaps.map(function (x) {
+          return ''
+            + '<div class="project-card">'
+            + '  <div class="project-title">' + escapeHtml(x.name || "Untitled quote") + '</div>'
+            + '  <div class="project-meta">'
+            +      escapeHtml(x.calc || "") + ' • '
+            +      escapeHtml((x.dashboard && x.dashboard.type) || "") + ' • '
+            +      escapeHtml(String((x.dashboard && x.dashboard.length) || 0)) + 'm'
+            +      '<br>Saved ' + escapeHtml(new Date(x.savedAt).toLocaleString("en-AU"))
+            + '  </div>'
+            + '  <div class="project-total">' + money((x.dashboard && x.dashboard.total) || 0) + '</div>'
+            + '  <div class="project-actions">'
+            + '    <button class="mini-btn" type="button" data-load="' + escapeHtml(x.id) + '">Load</button>'
+            + '    <button class="mini-btn" type="button" data-delete="' + escapeHtml(x.id) + '">Delete</button>'
+            + '  </div>'
+            + '</div>';
+        }).join("");
+
+        Array.from(el.projectList.querySelectorAll("[data-load]")).forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            loadSnapshot(btn.getAttribute("data-load"));
+          });
+        });
+
+        Array.from(el.projectList.querySelectorAll("[data-delete]")).forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            deleteSnapshot(btn.getAttribute("data-delete"));
+          });
+        });
+      }
+
+      function resetCurrent() {
+        state.currentPresetIndex = 0;
+        if (state.currentCalc === "fence") {
+          state.form.fence = {
+            position: "front",
+            sides: "2",
+            access: "easy",
+            slope: "flat",
+            ground: "standard",
+            timeline: "normal",
+            remove: "none",
+            sleeper: "none",
+            singleQty: 0,
+            doubleQty: 0,
+            slide: "no",
+            slideWidth: 3.9,
+            corner: false,
+            onWall: false,
+            panelSystem: "lysaght"
+          };
+          el.quickLength.value = 20;
+        } else if (state.currentCalc === "block") {
+          state.form.block = {
+            type: "wall",
+            position: "front",
+            sides: "2",
+            access: "easy",
+            ground: "standard",
+            corners: 0,
+            footing: "yes",
+            render: "none",
+            capType: "flat",
+            baseHeight: 400,
+            infillType: "colorbond",
+            infillHeight: 1200,
+            retainingInfill: false,
+            solidSection: false,
+            solidLength: 3,
+            renderSolid: "none",
+            letterbox: false
+          };
+          el.quickLength.value = 10;
+        } else {
+          state.form.retaining = {
+            type: "concrete",
+            bank: "no",
+            access: "easy",
+            ground: "standard",
+            removal: "none",
+            fenceTop: "no",
+            fenceType: "colorbond",
+            grass: "no",
+            grassDepth: 2.5
+          };
+          el.quickLength.value = 10;
+        }
+
+        renderHeightOptions();
+        applyPresetToState();
+        renderMaterials();
+        renderKindFields();
+        runCalc();
+      }
+
+      function newQuote() {
+        el.jobName.value = "";
+        state.currentCalc = "fence";
+        state.currentPresetIndex = 0;
+        state.form.fence = {
+          position: "front",
+          sides: "2",
+          access: "easy",
+          slope: "flat",
+          ground: "standard",
+          timeline: "normal",
+          remove: "none",
+          sleeper: "none",
+          singleQty: 0,
+          doubleQty: 0,
+          slide: "no",
+          slideWidth: 3.9,
+          corner: false,
+          onWall: false,
+          panelSystem: "lysaght"
+        };
+        state.form.block = {
+          type: "wall",
+          position: "front",
+          sides: "2",
+          access: "easy",
+          ground: "standard",
+          corners: 0,
+          footing: "yes",
+          render: "none",
+          capType: "flat",
+          baseHeight: 400,
+          infillType: "colorbond",
+          infillHeight: 1200,
+          retainingInfill: false,
+          solidSection: false,
+          solidLength: 3,
+          renderSolid: "none",
+          letterbox: false
+        };
+        state.form.retaining = {
+          type: "concrete",
+          bank: "no",
+          access: "easy",
+          ground: "standard",
+          removal: "none",
+          fenceTop: "no",
+          fenceType: "colorbond",
+          grass: "no",
+          grassDepth: 2.5
+        };
+        el.quickLength.value = 20;
+        renderHeightOptions();
+        renderMaterials();
+        renderKindFields();
+        el.tabs.forEach(function (tab) {
+          tab.classList.toggle("active", tab.getAttribute("data-calc") === "fence");
+        });
+        runCalc();
+        setStatus("New quote started.", "success");
+        document.getElementById("tcpMainArea").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function exportPdf() {
+        if (!state.currentResult) {
+          setStatus("Run a quote first.", "error");
+          return;
+        }
+
+        var dash = window.TradieCalc.toDashboard(state.currentResult);
+        var summary = window.TradieCalc.toSummary(state.currentResult);
+        var name = (el.jobName.value || "Tradie Quote").trim();
+
+        var html = ''
+          + '<html><head><title>' + escapeHtml(name) + '</title>'
+          + '<style>'
+          + 'body{font-family:Arial,sans-serif;padding:30px;color:#111}'
+          + 'h1{margin:0 0 10px}'
+          + 'h2{margin:20px 0 10px}'
+          + 'table{width:100%;border-collapse:collapse;margin-top:10px}'
+          + 'td,th{border:1px solid #ccc;padding:8px;text-align:left}'
+          + 'pre{white-space:pre-wrap;font-family:Arial,sans-serif;border:1px solid #ddd;padding:14px}'
+          + '</style></head><body>'
+          + '<h1>' + escapeHtml(name) + '</h1>'
+          + '<div>Calculator: ' + escapeHtml(state.currentCalc) + '</div>'
+          + '<div>Type: ' + escapeHtml(dash.type || "") + '</div>'
+          + '<div>Length: ' + escapeHtml(String(dash.length || 0)) + 'm</div>'
+          + '<div>Height: ' + escapeHtml(String(dash.height || "")) + '</div>'
+          + '<h2>Summary</h2>'
+          + '<table>'
+          + '<tr><th>Total</th><td>' + escapeHtml(summary.total || "$0") + '</td></tr>'
+          + '<tr><th>Cost</th><td>' + escapeHtml(summary.cost || "$0") + '</td></tr>'
+          + '<tr><th>Profit</th><td>' + escapeHtml(summary.profit || "$0") + '</td></tr>'
+          + '<tr><th>Sell / m</th><td>' + escapeHtml(summary.perM || "$0/m") + '</td></tr>'
+          + '</table>'
+          + '<h2>Quote</h2>'
+          + '<pre>' + escapeHtml(summary.quoteText || "No quote text generated.") + '</pre>'
+          + '</body></html>';
+
+        var win = window.open("", "_blank");
+        if (!win) {
+          setStatus("Popup blocked. Allow popups to print the quote.", "error");
+          return;
+        }
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+        win.focus();
+        win.print();
+      }
+
+      function safeLogout() {
+        if (typeof window.logout === "function") {
+          window.logout();
+        } else {
+          setStatus("Logout function not found on this page.", "error");
+        }
+      }
+
+      el.tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          switchCalc(tab.getAttribute("data-calc"));
+        });
+      });
+
+      el.quickLength.addEventListener("input", runCalc);
+      el.quickHeight.addEventListener("change", runCalc);
+      el.projectFilter.addEventListener("input", renderSnapshots);
+
+      document.getElementById("tcpNewQuoteBtn").addEventListener("click", newQuote);
+      document.getElementById("tcpHeroStartBtn").addEventListener("click", newQuote);
+      document.getElementById("tcpOpenProjectsBtn").addEventListener("click", function () {
+        document.getElementById("tcpProjectsArea").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.getElementById("tcpHeroProjectsBtn").addEventListener("click", function () {
+        document.getElementById("tcpProjectsArea").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.getElementById("tcpJumpProjectsBtn").addEventListener("click", function () {
+        document.getElementById("tcpProjectsArea").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.getElementById("tcpResetBtn").addEventListener("click", resetCurrent);
+      document.getElementById("tcpReloadBtn").addEventListener("click", runCalc);
+      document.getElementById("tcpSaveProjectBtn").addEventListener("click", saveSnapshot);
+      document.getElementById("tcpPdfBtn").addEventListener("click", exportPdf);
+      document.getElementById("tcpLogoutBtn").addEventListener("click", safeLogout);
+
+      renderHeightOptions();
+      applyPresetToState();
+      renderMaterials();
+      renderKindFields();
+      renderSnapshots();
+      runCalc();
+    })();
+  </script>
+</section>
