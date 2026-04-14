@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tradie Calculator Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Poppins,Arial,sans-serif;
+  background:#070707;
+  color:#F5F1E8;
+}
+
+/* APP LAYOUT */
+.app{
+  display:flex;
+  height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:260px;
+  background:#0d0d0d;
+  border-right:1px solid rgba(198,167,94,.15);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+
+.logo{
+  height:50px;
+  margin-bottom:30px;
+}
+
+.nav button{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  background:#111;
+  border:1px solid rgba(198,167,94,.1);
+  color:#fff;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.nav button:hover{
+  background:#1a1a1a;
+}
+
+.logout{
+  margin-top:auto;
+  background:#C6A75E;
+  color:#111;
+  font-weight:700;
+}
+
+/* MAIN AREA */
+.main{
+  flex:1;
+  padding:30px;
+  overflow:auto;
+}
+
+/* TOP BAR */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.topbar h1{
+  font-size:26px;
+}
+
+/* CARD */
+.card{
+  background:#111;
+  border:1px solid rgba(198,167,94,.15);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .app{
+    flex-direction:column;
+  }
+  .sidebar{
+    width:100%;
+    flex-direction:row;
+    overflow:auto;
+  }
+  .nav{
+    display:flex;
+    gap:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loading" style="
+position:fixed;
+inset:0;
+background:#070707;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+z-index:9999;
+">
+Checking access...
+</div>
+
+<div id="app" class="app" style="display:none">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <img class="logo"
+    src="https://img1.wsimg.com/isteam/ip/228f7ec4-d3e5-44c1-aeb1-3954d9b015b2/Tradiecalcpro.png/:/rs=h:175,m">
+
+    <div class="nav">
+      <button onclick="loadPage('fence')">Fence Calc</button>
+      <button onclick="loadPage('block')">Block Wall</button>
+      <button onclick="loadPage('retaining')">Retaining Wall</button>
+    </div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="topbar">
+      <h1>Dashboard</h1>
+      <div id="userEmail"></div>
+    </div>
+
+    <div id="content">
+
+      <div class="card">
+        Welcome to Tradie Calculator Pro
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyC9UlL6WJ5JHL5-OJgAhSocxXREFMYgCLQ",
+  authDomain: "tradie-calculator-pro.firebaseapp.com",
+  projectId: "tradie-calculator-pro"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+/* AUTH LOCK */
+firebase.auth().onAuthStateChanged(function(user){
+
+  if(!user){
+    window.location.href = "index.html"; // back to login
+    return;
+  }
+
+  // user is logged in
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("app").style.display = "flex";
+
+  document.getElementById("userEmail").innerText = user.email;
+
+});
+
+/* LOGOUT */
+function logout(){
+  firebase.auth().signOut().then(()=>{
+    window.location.href = "index.html";
+  });
+}
+
+/* PAGE SWITCHING */
+function loadPage(type){
+
+  const content = document.getElementById("content");
+
+  if(type === "fence"){
+    content.innerHTML = `
+      <div class="card">Fence Calculator goes here</div>
+    `;
+  }
+
+  if(type === "block"){
+    content.innerHTML = `
+      <div class="card">Block Wall Calculator goes here</div>
+    `;
+  }
+
+  if(type === "retaining"){
+    content.innerHTML = `
+      <div class="card">Retaining Wall Calculator goes here</div>
+    `;
+  }
+
+}
+</script>
+
+</body>
+</html>
